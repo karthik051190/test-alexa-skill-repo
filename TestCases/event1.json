@@ -1,0 +1,33 @@
+{
+  "queryStringParameters":{
+    "cityId": 1,
+    "Rejected": [
+      {
+        "Phone_Number": "+16825538718",
+        "Reservation_Date": "2018-05-27T05:00:00.000Z",
+        "First_Name": "Kiran",
+        "Email": "kirankraleti@gmail.com",
+        "Slot": "2:00 PM - 4:00 PM",
+        "Ground_Name": "Bakersfield - Cricket"
+      },
+      {
+        "Phone_Number": "+16825534744",
+        "Reservation_Date": "2018-05-27T05:00:00.000Z",
+        "First_Name": "Shiva",
+        "Email": "kiran.vtz060@gmail.com",
+        "Slot": "2:00 PM - 4:00 PM",
+        "Ground_Name": "Bakersfield - Cricket"
+      }
+    ],
+    "Approved": [
+      {
+        "Phone_Number": "+16825538718",
+        "Reservation_Date": "2018-05-27T05:00:00.000Z",
+        "First_Name": "Kiran",
+        "Email": "kirankraleti@gmail.com",
+        "Slot": "2:00 PM - 4:00 PM",
+        "Ground_Name": "Bakersfield - Cricket"
+      }
+    ]
+  }
+}

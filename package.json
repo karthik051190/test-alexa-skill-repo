@@ -1,0 +1,16 @@
+{
+  "name": "fm_slot_reserve_notification",
+  "version": "1.0.0",
+  "description": "fm_slot_reserve_notification",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "BizCloud Experts",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.268.1",
+    "mysql": "^2.15.0",
+    "winston": "^3.0.0"
+  }
+}

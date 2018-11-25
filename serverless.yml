@@ -1,0 +1,36 @@
+
+service: serverless-application-framework-backend
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  region: us-east-1
+  versionFunctions: false
+  deploymentBucket: ${ssm:SLSBucketName}
+  #stage: ${opt:stage, 'dev'}
+
+functions:
+  info_kiosk_welcome:
+    handler: index.handler
+    name: info_kiosk_welcome
+    description: lambda_db_conn_status
+    runtime: nodejs6.10
+    timeout: 30
+    memorySize: 128
+    role: ${ssm:LambdaSSMRoleParameter}
+    vpc:
+        securityGroupIds:
+        - ${ssm:LambdaSG}
+        subnetIds:
+        - ${ssm:PrivateSubnet1}
+        - ${ssm:PrivateSubnet2}
+    environment:
+        db_username: ${ssm:MasterUsername}
+        db_password: ${ssm:MasterPassword}
+        db_name: ${ssm:DBName}
+        db_host: ${ssm:DBHost}
+    events:
+      - alexaSkill: ${ssm:AlexaSkillId}
+    tags:
+        Project: InfoKiosk
+        Version: 1.0

@@ -1,0 +1,50 @@
+version: 0.2
+
+env:
+    variables:
+        #S3_BUCKET: "test-cicd-karthik-bkt"
+        #APP_NAME: "<APP_NAME_HERE>"
+        BUILD_ENV : "prod"
+
+phases:
+    install:
+        commands:
+        # Download and Install NodeJS 8.0     
+        - sudo apt-get update -y
+        # Verify Node npm installation 
+        - npm --version
+        - nodejs --version
+        # set npm registry to http 
+        # npm config set registry="http://registry.npmjs.org/"
+        #- npm config set strict-ssl false
+        # Install Angular CLI, If you are not using Angular 6, install angular/cli@1.7.0 or lower, confirm by running ng -v inside your project folder
+        - npm i npm@latest -g
+        - npm install -g serverless
+        # Install node dependancies.
+        #- ng help
+        #- ng version 
+        - npm install 
+
+    build:
+        commands:
+        # Builds Angular application. You can also build using custom environment here like mock or staging
+        - echo Build started on `date`
+        - sls deploy -v
+
+    post_build:
+        commands:
+        # Clear S3 bucket.
+        #- aws s3 rm s3://${S3_BUCKET} --recursive
+        #- aws s3 rm s3://front-end-2018-karthik --recursive
+        #- echo S3 bucket is cleared.
+        # Copy dist folder to S3 bucket, As of Angular 6, builds are stored inside an app folder in distribution and not at the root of the dist folder
+        #- aws s3 cp dist s3://${S3_BUCKET} --recursive 
+        #- aws s3 rm s3://front-end-2018-karthik --recursive
+        - echo Build completed on `date`
+        - sls logs -f info_kiosk_welcome
+
+artifacts:
+    files:
+        - '**/*'
+    discard-paths: yes
+    base-directory: '*'
